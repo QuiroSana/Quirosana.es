@@ -8,88 +8,657 @@
 
     <meta name="description" content="QuiroSana — Alba, quiromasajista. Quiromasaje personalizado, descontracturante, deportivo y relajante.">
 
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8f6f1;
+            color: #30352f;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(248, 246, 241, 0.94);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(48, 53, 47, 0.08);
+        }
+
+        .nav {
+            max-width: 1150px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 25px;
+        }
+
+        .logo {
+            font-size: 25px;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #7b8875;
+            margin-top: -3px;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            font-size: 14px;
+            color: #555b53;
+        }
+
+        .nav-button,
+        .button {
+            background: #71806b;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .nav-button:hover,
+        .button:hover {
+            background: #5e6c59;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 130px 25px 80px;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #f8f6f1 0%,
+                    #f8f6f1 45%,
+                    #e8ede4 100%
+                );
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: #dfe5d9;
+            right: -180px;
+            bottom: -200px;
+            opacity: 0.6;
+        }
+
+        .hero-content {
+            max-width: 1150px;
+            width: 100%;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            max-width: 620px;
+        }
+
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 12px;
+            color: #7b8875;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(50px, 7vw, 88px);
+            font-weight: 400;
+            line-height: 0.95;
+            margin-bottom: 30px;
+        }
+
+        .hero p {
+            max-width: 520px;
+            font-size: 18px;
+            color: #656b62;
+            margin-bottom: 35px;
+        }
+
+        section {
+            padding: 110px 25px;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        .section-title {
+            font-family: Georgia, serif;
+            font-size: 45px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .section-intro {
+            max-width: 600px;
+            color: #6b7069;
+            margin-bottom: 50px;
+        }
+
+        .about {
+            background: #ffffff;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-image {
+            min-height: 480px;
+            background: linear-gradient(145deg, #dfe5d9, #f2eee6);
+            border-radius: 3px;
+        }
+
+        .about-text p {
+            color: #656b62;
+            margin-bottom: 20px;
+        }
+
+        .services {
+            background: #f8f6f1;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .service {
+            background: white;
+            padding: 35px;
+            border: 1px solid rgba(48,53,47,0.08);
+            transition: 0.3s;
+        }
+
+        .service:hover {
+            transform: translateY(-4px);
+        }
+
+        .service-number {
+            font-size: 12px;
+            color: #8a9883;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .service h3 {
+            font-family: Georgia, serif;
+            font-size: 25px;
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+
+        .service p {
+            color: #6b7069;
+            font-size: 15px;
+        }
+
+        .pricing {
+            background: #e8ede4;
+        }
+
+        .price-box {
+            max-width: 650px;
+            background: white;
+            padding: 50px;
+        }
+
+        .price-main {
+            font-family: Georgia, serif;
+            font-size: 55px;
+        }
+
+        .price-description {
+            color: #6b7069;
+            margin-bottom: 35px;
+        }
+
+        .bonus {
+            border-top: 1px solid #ddd;
+            padding-top: 25px;
+        }
+
+        .bonus span {
+            color: #6b7069;
+        }
+
+        .contact {
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .contact p {
+            color: #6b7069;
+            margin-bottom: 35px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 35px;
+            color: #596057;
+            font-size: 15px;
+        }
+
+        footer {
+            background: #30352f;
+            color: #e9ece6;
+            padding: 45px 25px;
+            text-align: center;
+        }
+
+        footer .footer-logo {
+            font-family: Georgia, serif;
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: #b9beb6;
+        }
+
+        @media (max-width: 750px) {
+
+            nav a:not(.nav-button) {
+                display: none;
+            }
+
+            h1 {
+                font-size: 58px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-image {
+                min-height: 300px;
+                order: -1;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 80px 20px;
+            }
+
+        }
+
+    </style>
 </head>
 
 <body>
 
     <header>
-        <h1>QuiroSana</h1>
-        <p>Alba · Quiromasajista</p>
+
+        <div class="nav">
+
+            <a href="#" class="logo">
+                QuiroSana
+                <span>Alba · Quiromasajista</span>
+            </a>
+
+            <nav>
+
+                <a href="#sobre-mi">Sobre mí</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#tarifas">Tarifas</a>
+
+                <a href="#contacto" class="nav-button">
+                    Reservar
+                </a>
+
+            </nav>
+
+        </div>
+
     </header>
 
-    <main>
 
-        <section>
-            <h2>Bienvenido/a a QuiroSana</h2>
+    <section class="hero">
 
-            <p>
-                Un espacio dedicado al bienestar y al cuidado corporal
-                a través del quiromasaje personalizado.
+        <div class="hero-content">
+
+            <div class="hero-text">
+
+                <div class="eyebrow">
+                    Quiromasaje · Bienestar · Movimiento
+                </div>
+
+                <h1>
+                    Escucha<br>
+                    tu cuerpo.
+                </h1>
+
+                <p>
+                    Quiromasaje personalizado para ayudarte a liberar
+                    tensión, recuperar movilidad y cuidar de tu cuerpo
+                    desde un enfoque cercano y consciente.
+                </p>
+
+                <a
+                    href="https://wa.me/34624974669"
+                    class="button"
+                    target="_blank"
+                >
+                    Reservar por WhatsApp
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="about" id="sobre-mi">
+
+        <div class="container">
+
+            <div class="about-grid">
+
+                <div class="about-image"></div>
+
+                <div class="about-text">
+
+                    <div class="eyebrow">
+                        QuiroSana
+                    </div>
+
+                    <h2 class="section-title">
+                        Un espacio para volver a ti.
+                    </h2>
+
+                    <p>
+                        Soy Alba, quiromasajista, y he creado QuiroSana
+                        como un espacio dedicado al cuidado del cuerpo.
+                    </p>
+
+                    <p>
+                        Cada sesión se adapta a tus necesidades,
+                        combinando diferentes técnicas de quiromasaje
+                        para trabajar las zonas que más lo necesitan.
+                    </p>
+
+                    <p>
+                        El objetivo es que puedas salir de cada sesión
+                        sintiéndote más ligero, consciente y conectado
+                        con tu cuerpo.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="services" id="servicios">
+
+        <div class="container">
+
+            <div class="eyebrow">
+                Tratamientos
+            </div>
+
+            <h2 class="section-title">
+                Encuentra lo que tu cuerpo necesita.
+            </h2>
+
+            <p class="section-intro">
+                Cada sesión se adapta a tu estado y a tus objetivos,
+                combinando diferentes técnicas de quiromasaje.
             </p>
 
-            <a href="https://wa.me/34624974669">
-                Reservar cita por WhatsApp
-            </a>
-        </section>
 
-        <section>
-            <h2>Servicios</h2>
+            <div class="services-grid">
 
-            <h3>Quiromasaje personalizado</h3>
-            <p>
-                Una sesión adaptada a las necesidades de cada persona.
-            </p>
+                <div class="service">
 
-            <h3>Masaje descontracturante</h3>
-            <p>
-                Trabajo manual orientado a aliviar la sensación de tensión
-                y sobrecarga muscular.
-            </p>
+                    <div class="service-number">
+                        01
+                    </div>
 
-            <h3>Masaje deportivo</h3>
-            <p>
-                Trabajo corporal adaptado a personas físicamente activas.
-            </p>
+                    <h3>
+                        Quiromasaje personalizado
+                    </h3>
 
-            <h3>Masaje relajante</h3>
-            <p>
-                Una sesión enfocada en la relajación y el bienestar.
-            </p>
-        </section>
+                    <p>
+                        Una sesión adaptada a las necesidades de tu
+                        cuerpo en ese momento.
+                    </p>
 
-        <section>
-            <h2>Sobre mí</h2>
+                </div>
 
-            <p>
-                Soy Alba, quiromasajista y creadora de QuiroSana.
-                Mi objetivo es ofrecer un trabajo personalizado,
-                adaptado a las necesidades de cada persona.
-            </p>
-        </section>
 
-        <section>
-            <h2>Tarifas</h2>
+                <div class="service">
 
-            <p>Sesión de 45 minutos — 45 €</p>
-            <p>Bono de 4 sesiones — 160 €</p>
-        </section>
+                    <div class="service-number">
+                        02
+                    </div>
 
-        <section>
-            <h2>Contacto</h2>
+                    <h3>
+                        Descontracturante
+                    </h3>
 
-            <p>Teléfono / WhatsApp: 624 97 46 69</p>
-            <p>Email: albaquirosana@gmail.com</p>
-            <p>Instagram: @quirosana_</p>
+                    <p>
+                        Trabajo dirigido a zonas con tensión y sobrecarga
+                        muscular.
+                    </p>
 
-            <a href="https://wa.me/34624974669">
-                Reservar cita
-            </a>
-        </section>
+                </div>
 
-    </main>
+
+                <div class="service">
+
+                    <div class="service-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Deportivo
+                    </h3>
+
+                    <p>
+                        Orientado a personas físicamente activas que
+                        buscan cuidar y preparar su musculatura.
+                    </p>
+
+                </div>
+
+
+                <div class="service">
+
+                    <div class="service-number">
+                        04
+                    </div>
+
+                    <h3>
+                        Relajante
+                    </h3>
+
+                    <p>
+                        Una sesión enfocada en reducir la sensación de
+                        tensión y favorecer la relajación.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="pricing" id="tarifas">
+
+        <div class="container">
+
+            <div class="eyebrow">
+                Tarifas
+            </div>
+
+            <h2 class="section-title">
+                Tu tiempo. Tu cuerpo.
+            </h2>
+
+            <div class="price-box">
+
+                <div class="price-main">
+                    45€
+                </div>
+
+                <div class="price-description">
+                    Sesión de 45 minutos
+                </div>
+
+                <div class="bonus">
+
+                    <strong>
+                        Bono de 4 sesiones
+                    </strong>
+
+                    <span>
+                        160€ · 40€ por sesión
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="contact" id="contacto">
+
+        <div class="container">
+
+            <div class="contact-content">
+
+                <div class="eyebrow">
+                    Reservas
+                </div>
+
+                <h2 class="section-title">
+                    ¿Hablamos?
+                </h2>
+
+                <p>
+                    Puedes reservar tu sesión por WhatsApp,
+                    llamándome o escribiéndome por Instagram.
+                </p>
+
+                <a
+                    href="https://wa.me/34624974669"
+                    class="button"
+                    target="_blank"
+                >
+                    Reservar por WhatsApp
+                </a>
+
+                <div class="contact-info">
+
+                    <a href="tel:+34624974669">
+                        624 97 46 69
+                    </a>
+
+                    <a href="mailto:albaquirosana@gmail.com">
+                        albaquirosana@gmail.com
+                    </a>
+
+                    <a
+                        href="https://instagram.com/quirosana_"
+                        target="_blank"
+                    >
+                        @quirosana_
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
 
     <footer>
-        <p>© 2026 QuiroSana · Alba, Quiromasajista</p>
+
+        <div class="footer-logo">
+            QuiroSana
+        </div>
+
+        <p>
+            Alba · Quiromasajista
+        </p>
+
+        <p>
+            © 2026 QuiroSana
+        </p>
+
     </footer>
 
 </body>
