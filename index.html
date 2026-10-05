@@ -7,6 +7,30 @@
   <title>QuiroSana · Alba Quiromasajista</title>
 
   <meta name="description" content="QuiroSana · Quiromasaje personalizado con Alba. Un espacio profesional para cuidar, comprender y trabajar tu cuerpo desde una perspectiva consciente.">
+  <meta name="theme-color" content="#641F2B">
+
+  <!-- Vista previa al compartir el enlace (WhatsApp, Instagram, etc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="QuiroSana · Alba Quiromasajista">
+  <meta property="og:description" content="Quiromasaje personalizado para cuidar, comprender y trabajar tu cuerpo.">
+  <meta property="og:image" content="logo.png">
+
+  <!-- Icono de la pestaña -->
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Datos para buscadores (Google) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthAndBeautyBusiness",
+    "name": "QuiroSana",
+    "description": "Quiromasaje personalizado con Alba.",
+    "telephone": "+34624974669",
+    "email": "albaquirosana@gmail.com",
+    "image": "logo.png",
+    "sameAs": ["https://instagram.com/quirosana_"]
+  }
+  </script>
 
   <style>
 
@@ -23,6 +47,9 @@
       --navy: #17263A;
       --gold: #B59A6A;
       --text-soft: #5C5C5C;
+      --cream: #F2EBDD;
+      --cream-dark: #E9DFCB;
+      --header-h: 84px;
     }
 
 
@@ -38,6 +65,7 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 0;
     }
 
     body {
@@ -45,6 +73,7 @@
       background: var(--background);
       color: var(--anthracite);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
@@ -52,9 +81,26 @@
       color: inherit;
     }
 
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
     .container {
       width: min(1180px, 90%);
       margin: 0 auto;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--burgundy);
     }
 
 
@@ -63,15 +109,31 @@
     ========================= */
 
     header {
-      background: var(--background);
-      padding: 28px 0;
-      border-bottom: 1px solid rgba(37, 37, 37, 0.08);
+      position: relative;
+      z-index: 50;
+
+      background: var(--cream-dark);
+
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(181, 154, 106, 0.45);
     }
 
     .header-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-icon {
+      width: 56px;
+      height: auto;
+      flex-shrink: 0;
     }
 
     .logo {
@@ -84,6 +146,10 @@
 
     .logo span {
       color: var(--burgundy);
+    }
+
+    header .logo {
+      font-size: 24px;
     }
 
     .logo-subtitle {
@@ -111,6 +177,119 @@
 
     nav a:hover {
       color: var(--burgundy);
+    }
+
+    nav a.nav-cta {
+      padding: 11px 20px;
+      background: var(--burgundy);
+      color: var(--white);
+      transition: background 0.3s ease;
+    }
+
+    nav a.nav-cta:hover {
+      background: var(--burgundy-dark);
+      color: var(--white);
+    }
+
+    /* Botón del menú móvil */
+    .menu-toggle {
+      display: none;
+
+      width: 44px;
+      height: 44px;
+
+      background: none;
+      border: 0;
+      cursor: pointer;
+
+      position: relative;
+    }
+
+    .menu-toggle span,
+    .menu-toggle span::before {
+      content: "";
+      position: absolute;
+      left: 11px;
+
+      width: 22px;
+      height: 1px;
+
+      background: var(--anthracite);
+      transition: transform 0.3s ease, top 0.3s ease;
+    }
+
+    .menu-toggle span {
+      top: 21px;
+    }
+
+    .menu-toggle span::before {
+      left: 0;
+      top: 7px;
+    }
+
+    .menu-toggle[aria-expanded="true"] span {
+      transform: rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] span::before {
+      top: 0;
+      transform: rotate(-90deg);
+    }
+
+
+    /* =========================
+       BOTONES
+    ========================= */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-top: 38px;
+      padding: 17px 30px;
+
+      background: var(--burgundy);
+      color: var(--white);
+
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      border: 1px solid var(--burgundy);
+
+      transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .btn:hover {
+      background: var(--burgundy-dark);
+      border-color: var(--burgundy-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-light {
+      background: var(--white);
+      border-color: var(--white);
+      color: var(--burgundy-dark);
+    }
+
+    .btn-light:hover {
+      background: var(--cream);
+      border-color: var(--cream);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.45);
+      color: var(--white);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--gold);
     }
 
 
@@ -153,15 +332,32 @@
 
     .hero h1 {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(62px, 7vw, 100px);
+      font-size: clamp(46px, 6vw, 84px);
       font-weight: 400;
-      line-height: 0.95;
-      letter-spacing: -4px;
+      line-height: 1;
+      letter-spacing: -3px;
       color: var(--anthracite);
     }
 
-    .hero h1 span {
+    .hero h1 .line {
+      display: block;
+      white-space: nowrap;
+    }
+
+    .hero h1 span.accent {
       color: var(--burgundy);
+    }
+
+    .hero-subtitle {
+      margin-top: 18px;
+
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-size: 20px;
+      letter-spacing: 0.3px;
+
+      color: var(--text-soft);
+      opacity: 0.85;
     }
 
     .hero-description {
@@ -173,34 +369,9 @@
       color: var(--text-soft);
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      margin-top: 38px;
-      padding: 17px 30px;
-
-      background: var(--burgundy);
-      color: var(--white);
-
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-
-      transition:
-        background 0.3s ease,
-        transform 0.3s ease;
-    }
-
-    .btn:hover {
-      background: var(--burgundy-dark);
-      transform: translateY(-2px);
-    }
-
 
     /* =========================
-       IMAGEN HERO
+       IMAGEN HERO (LOGO)
     ========================= */
 
     .hero-visual {
@@ -213,39 +384,34 @@
       width: 100%;
       height: 580px;
 
-      background:
-        linear-gradient(
-          145deg,
-          #ECECEA 0%,
-          #F8F8F6 45%,
-          #DDDDDA 100%
-        );
-
+      background: var(--cream);
       overflow: hidden;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .hero-image::after {
+    /* Marco fino dorado, como un cuadro */
+    .hero-image::before {
       content: "";
-
       position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(181, 154, 106, 0.55);
+      pointer-events: none;
+    }
 
-      width: 230px;
-      height: 230px;
-
-      border: 1px solid rgba(181, 154, 106, 0.7);
-      border-radius: 50%;
-
-      top: 50%;
-      left: 50%;
-
-      transform: translate(-50%, -50%);
+    .hero-image img {
+      width: 82%;
+      height: auto;
+      mix-blend-mode: multiply;
     }
 
     .hero-image-text {
       position: absolute;
 
-      right: 25px;
-      bottom: 25px;
+      right: 34px;
+      bottom: 34px;
 
       writing-mode: vertical-rl;
 
@@ -259,8 +425,8 @@
     .hero-image-detail {
       position: absolute;
 
-      left: 25px;
-      bottom: 25px;
+      left: 34px;
+      bottom: 34px;
 
       font-size: 9px;
       letter-spacing: 2px;
@@ -268,11 +434,6 @@
       color: var(--anthracite);
       text-transform: uppercase;
     }
-
-
-    /* =========================
-       DETALLE LATERAL
-    ========================= */
 
     .hero-side-detail {
       position: absolute;
@@ -294,7 +455,7 @@
 
 
     /* =========================
-       INTRO
+       INTRO / SOBRE MÍ
     ========================= */
 
     .intro {
@@ -307,13 +468,6 @@
       grid-template-columns: 0.8fr 1fr;
       gap: 120px;
       align-items: start;
-    }
-
-    .section-label {
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--burgundy);
     }
 
     .intro h2 {
@@ -334,6 +488,34 @@
       font-size: 17px;
       line-height: 1.9;
 
+      color: var(--text-soft);
+    }
+
+    .intro p + p {
+      margin-top: 24px;
+    }
+
+    .signature {
+      margin-top: 42px;
+      padding-top: 26px;
+      max-width: 540px;
+
+      border-top: 1px solid rgba(181, 154, 106, 0.7);
+    }
+
+    .signature strong {
+      display: block;
+
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--burgundy);
+    }
+
+    .signature span {
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
       color: var(--text-soft);
     }
 
@@ -394,11 +576,15 @@
       background: var(--background);
     }
 
-    .services h2 {
+    .services h2,
+    .process h2,
+    .prices h2,
+    .faq h2 {
       margin-top: 20px;
 
       font-family: Georgia, "Times New Roman", serif;
       font-weight: 400;
+      line-height: 1.05;
 
       font-size: clamp(44px, 5vw, 70px);
 
@@ -419,6 +605,13 @@
       background: var(--white);
 
       border-top: 2px solid var(--burgundy);
+
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(37, 37, 37, 0.07);
     }
 
     .service-card h3 {
@@ -439,6 +632,85 @@
       color: var(--text-soft);
     }
 
+    .service-card .service-meta {
+      margin-top: 26px;
+      padding-top: 18px;
+
+      border-top: 1px solid rgba(37, 37, 37, 0.08);
+
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      color: var(--burgundy);
+    }
+
+
+    /* =========================
+       CÓMO ES UNA SESIÓN
+    ========================= */
+
+    .process {
+      padding: 140px 0;
+      background: var(--white);
+    }
+
+    .steps {
+      margin-top: 70px;
+
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+
+      list-style: none;
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      padding: 38px 30px 0 0;
+
+      border-top: 1px solid rgba(181, 154, 106, 0.7);
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+
+      position: absolute;
+      top: -17px;
+      left: 0;
+
+      width: 34px;
+      height: 34px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: var(--burgundy);
+      color: var(--white);
+
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 15px;
+      border-radius: 50%;
+    }
+
+    .step h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--anthracite);
+    }
+
+    .step p {
+      margin-top: 14px;
+
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--text-soft);
+    }
+
 
     /* =========================
        TARIFAS
@@ -446,22 +718,17 @@
 
     .prices {
       padding: 140px 0;
-      background: var(--white);
+      background: var(--background);
     }
 
-    .prices h2 {
-      margin-top: 20px;
-
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: 400;
-
-      font-size: clamp(44px, 5vw, 70px);
-
-      color: var(--anthracite);
+    .prices-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 90px;
+      align-items: start;
     }
 
     .price-box {
-      max-width: 700px;
       margin-top: 65px;
 
       border-top: 1px solid rgba(181,154,106,0.7);
@@ -483,10 +750,111 @@
       color: var(--anthracite);
     }
 
+    .price-note {
+      display: block;
+      margin-top: 6px;
+
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
     .price {
       color: var(--burgundy);
       font-size: 18px;
       font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .prices-aside {
+      margin-top: 65px;
+      padding: 40px 36px;
+
+      background: var(--white);
+      border-top: 2px solid var(--burgundy);
+    }
+
+    .prices-aside h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    .prices-aside p {
+      margin-top: 16px;
+
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--text-soft);
+    }
+
+
+    /* =========================
+       PREGUNTAS FRECUENTES
+    ========================= */
+
+    .faq {
+      padding: 140px 0;
+      background: var(--white);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1fr;
+      gap: 120px;
+      align-items: start;
+    }
+
+    .faq-list {
+      border-top: 1px solid rgba(181,154,106,0.7);
+    }
+
+    .faq-list details {
+      border-bottom: 1px solid rgba(37,37,37,0.1);
+    }
+
+    .faq-list summary {
+      list-style: none;
+      cursor: pointer;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+
+      padding: 26px 0;
+
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 21px;
+      color: var(--anthracite);
+    }
+
+    .faq-list summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-list summary::after {
+      content: "+";
+      flex-shrink: 0;
+
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 24px;
+      font-weight: 300;
+      color: var(--burgundy);
+
+      transition: transform 0.3s ease;
+    }
+
+    .faq-list details[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-list details p {
+      padding: 0 40px 28px 0;
+
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--text-soft);
     }
 
 
@@ -528,13 +896,53 @@
       color: rgba(255,255,255,0.78);
     }
 
+    .booking-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .booking-actions .btn {
+      margin-top: 38px;
+    }
+
+    .contact-list {
+      margin-top: 70px;
+      padding-top: 40px;
+
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      justify-content: start;
+      gap: 70px;
+
+      border-top: 1px solid rgba(181, 154, 106, 0.4);
+    }
+
+    .contact-list dt {
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .contact-list dd {
+      margin-top: 10px;
+
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 20px;
+    }
+
+    .contact-list a:hover {
+      color: var(--gold);
+    }
+
 
     /* =========================
        FOOTER
     ========================= */
 
     footer {
-      padding: 65px 0;
+      padding: 65px 0 40px;
 
       background: var(--anthracite);
       color: var(--white);
@@ -551,7 +959,7 @@
     }
 
     footer .logo span {
-      color: var(--burgundy);
+      color: #A8404F;
     }
 
     footer .logo-subtitle {
@@ -567,6 +975,72 @@
       color: rgba(255,255,255,0.7);
     }
 
+    .footer-contact a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      margin-top: 50px;
+      padding-top: 24px;
+
+      border-top: 1px solid rgba(255,255,255,0.1);
+
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
+    }
+
+
+    /* =========================
+       ANIMACIÓN DE ENTRADA (solo portada)
+    ========================= */
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .hero-content > * {
+      animation: rise 0.9s cubic-bezier(.2,.7,.2,1) both;
+    }
+
+    .hero-content > :nth-child(2) { animation-delay: 0.12s; }
+    .hero-content > :nth-child(3) { animation-delay: 0.24s; }
+    .hero-content > :nth-child(4) { animation-delay: 0.36s; }
+    .hero-content > :nth-child(5) { animation-delay: 0.48s; }
+
+    .hero-image img {
+      animation: rise 1.3s cubic-bezier(.2,.7,.2,1) 0.2s both;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+
+
+    /* =========================
+       TABLET
+    ========================= */
+
+    @media (max-width: 1000px) {
+
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 60px;
+      }
+
+      .prices-grid,
+      .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .contact-list {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
 
     /* =========================
        MÓVIL
@@ -574,8 +1048,47 @@
 
     @media (max-width: 850px) {
 
+      .brand-icon {
+        width: 48px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
       nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+
+        padding: 8px 5% 24px;
+
+        background: var(--cream-dark);
+        border-bottom: 1px solid rgba(181, 154, 106, 0.45);
+
         display: none;
+      }
+
+      nav.is-open {
+        display: flex;
+      }
+
+      nav a {
+        width: 100%;
+        padding: 16px 0;
+        font-size: 11px;
+        border-bottom: 1px solid rgba(37, 37, 37, 0.09);
+      }
+
+      nav a.nav-cta {
+        margin-top: 18px;
+        text-align: center;
+        border-bottom: 0;
       }
 
       .hero {
@@ -627,8 +1140,12 @@
     @media (max-width: 500px) {
 
       .hero h1 {
-        font-size: 58px;
+        font-size: 11.5vw;
         letter-spacing: -2px;
+      }
+
+      .hero-subtitle {
+        font-size: 18px;
       }
 
       .hero-image {
@@ -641,10 +1158,16 @@
 
       .intro,
       .services,
+      .process,
       .prices,
+      .faq,
       .depth-section,
       .booking {
         padding: 90px 0;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
       }
 
       .price-row {
@@ -655,6 +1178,13 @@
         font-size: 18px;
       }
 
+      .faq-list summary {
+        font-size: 18px;
+      }
+
+      .booking-actions .btn {
+        width: 100%;
+      }
     }
 
   </style>
@@ -672,25 +1202,36 @@
 
     <div class="container header-inner">
 
-      <div>
+      <a href="#" class="brand" aria-label="QuiroSana, inicio">
+
+        <img src="logo-icon.png" alt="" class="brand-icon" width="56" height="56">
 
         <div class="logo">
           Quiro<span>S</span>ana
         </div>
 
-        <div class="logo-subtitle">
-          Alba · Quiromasajista
-        </div>
-
-      </div>
+      </a>
 
 
-      <nav>
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="mainNav"
+      >
+        <span></span>
+      </button>
+
+
+      <nav id="mainNav">
 
         <a href="#sobre-mi">Sobre mí</a>
         <a href="#servicios">Servicios</a>
+        <a href="#sesion">La sesión</a>
         <a href="#tarifas">Tarifas</a>
-        <a href="#reservar">Reservar</a>
+        <a href="#preguntas">Preguntas</a>
+        <a href="#reservar" class="nav-cta">Reservar</a>
 
       </nav>
 
@@ -699,24 +1240,28 @@
   </header>
 
 
-  <!-- =========================
-       PORTADA
-  ========================= -->
-
   <main>
 
-    <section class="hero">
+    <!-- =========================
+         PORTADA
+    ========================= -->
 
-      <div class="container hero-content">
+    <section class="container hero">
+
+      <div class="hero-content">
 
         <div class="eyebrow">
           Quiromasaje · Movimiento · Bienestar
         </div>
 
         <h1>
-          El cuerpo<br>
-          también <span>habla.</span>
+          <span class="line">El cuerpo</span>
+          <span class="line">también <span class="accent">habla.</span></span>
         </h1>
+
+        <p class="hero-subtitle">
+          y aquí lo escuchamos
+        </p>
 
         <p class="hero-description">
           Quiromasaje personalizado para cuidar, comprender y trabajar
@@ -733,6 +1278,13 @@
       <div class="hero-visual">
 
         <div class="hero-image">
+
+          <img
+            src="logo.png"
+            alt="Logotipo de QuiroSana: las letras Q y S entrelazadas en burdeos y azul marino"
+            width="440"
+            height="365"
+          >
 
           <div class="hero-image-text">
             QuiroSana
@@ -782,13 +1334,18 @@
             la observación y el trabajo manual personalizado.
           </p>
 
-          <br>
-
           <p>
             El objetivo no es aplicar siempre la misma técnica,
             sino adaptar el tratamiento a lo que tu cuerpo necesita
             en cada momento.
           </p>
+
+          <!-- COMPLETAR: añade aquí 1-2 frases sobre tu formación y experiencia -->
+
+          <div class="signature">
+            <strong>Alba</strong>
+            <span>Quiromasajista · Fundadora de QuiroSana</span>
+          </div>
 
         </div>
 
@@ -852,50 +1409,106 @@
 
         <div class="service-grid">
 
+          <article class="service-card">
 
-          <div class="service-card">
-
-            <h3>
-              Descontracturante
-            </h3>
+            <h3>Descontracturante</h3>
 
             <p>
               Trabajo manual orientado a zonas de tensión,
               sobrecarga y molestias musculares.
             </p>
 
-          </div>
+            <div class="service-meta">Presión media-firme</div>
+
+          </article>
 
 
-          <div class="service-card">
+          <article class="service-card">
 
-            <h3>
-              Deportivo
-            </h3>
+            <h3>Deportivo</h3>
 
             <p>
               Tratamiento adaptado a las necesidades de personas
               físicamente activas y deportistas.
             </p>
 
-          </div>
+            <div class="service-meta">Antes o después del esfuerzo</div>
+
+          </article>
 
 
-          <div class="service-card">
+          <article class="service-card">
 
-            <h3>
-              Relajante
-            </h3>
+            <h3>Relajante</h3>
 
             <p>
               Un trabajo más suave pensado para favorecer la
               relajación y el bienestar corporal.
             </p>
 
-          </div>
+            <div class="service-meta">Presión suave</div>
 
+          </article>
 
         </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CÓMO ES UNA SESIÓN
+    ========================= -->
+
+    <section class="process" id="sesion">
+
+      <div class="container">
+
+        <div class="section-label">
+          Cómo funciona
+        </div>
+
+        <h2>
+          Así es tu primera visita.
+        </h2>
+
+
+        <ol class="steps">
+
+          <li class="step">
+            <h3>Hablamos</h3>
+            <p>
+              Me cuentas cómo estás, qué molestias tienes y qué
+              buscas. Sin prisas y con total confianza.
+            </p>
+          </li>
+
+          <li class="step">
+            <h3>Observo</h3>
+            <p>
+              Valoro la zona a tratar y elegimos juntos el tipo de
+              masaje y la intensidad adecuados.
+            </p>
+          </li>
+
+          <li class="step">
+            <h3>Trabajo</h3>
+            <p>
+              Realizo el quiromasaje con técnica manual, ajustando
+              la presión durante toda la sesión.
+            </p>
+          </li>
+
+          <li class="step">
+            <h3>Cierre</h3>
+            <p>
+              Al terminar te doy pautas sencillas para cuidar el
+              cuerpo hasta la próxima sesión.
+            </p>
+          </li>
+
+        </ol>
 
       </div>
 
@@ -908,43 +1521,142 @@
 
     <section class="prices" id="tarifas">
 
-      <div class="container">
+      <div class="container prices-grid">
 
-        <div class="section-label">
-          Tarifas
+        <div>
+
+          <div class="section-label">
+            Tarifas
+          </div>
+
+          <h2>
+            Una sesión pensada para ti.
+          </h2>
+
+
+          <div class="price-box">
+
+            <div class="price-row">
+
+              <div class="price-name">
+                Sesión de quiromasaje
+                <span class="price-note">45 minutos</span>
+              </div>
+
+              <div class="price">
+                45 €
+              </div>
+
+            </div>
+
+
+            <div class="price-row">
+
+              <div class="price-name">
+                Bono 4 sesiones
+                <span class="price-note">Equivale a 40 € por sesión</span>
+              </div>
+
+              <div class="price">
+                160 €
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
 
-        <h2>
-          Una sesión pensada para ti.
-        </h2>
+
+        <aside class="prices-aside">
+
+          <h3>¿No sabes qué sesión elegir?</h3>
+
+          <p>
+            Escríbeme y te oriento según lo que sientas en tu cuerpo.
+            Elegimos el tratamiento antes de empezar.
+          </p>
+
+          <a href="https://wa.me/34624974669" class="btn" target="_blank" rel="noopener">
+            Consultar por WhatsApp
+          </a>
+
+        </aside>
+
+      </div>
+
+    </section>
 
 
-        <div class="price-box">
+    <!-- =========================
+         PREGUNTAS FRECUENTES
+    ========================= -->
 
-          <div class="price-row">
+    <section class="faq" id="preguntas">
 
-            <div class="price-name">
-              Sesión de quiromasaje · 45 min
-            </div>
+      <div class="container faq-grid">
 
-            <div class="price">
-              45 €
-            </div>
+        <div>
 
+          <div class="section-label">
+            Antes de venir
           </div>
 
+          <h2>
+            Preguntas frecuentes.
+          </h2>
 
-          <div class="price-row">
+        </div>
 
-            <div class="price-name">
-              Bono 4 sesiones
-            </div>
 
-            <div class="price">
-              160 €
-            </div>
+        <div class="faq-list">
 
-          </div>
+          <details>
+            <summary>¿Qué diferencia hay entre los tres tratamientos?</summary>
+            <p>
+              El descontracturante trabaja con más presión sobre zonas
+              concretas de tensión, el deportivo se adapta a la actividad
+              física que haces y el relajante es más suave y envolvente.
+              Si dudas, lo decidimos juntos al empezar.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿Duele el quiromasaje?</summary>
+            <p>
+              Puedes notar cierta intensidad en zonas con mucha tensión,
+              pero la presión siempre se ajusta a ti. Dime en cualquier
+              momento si quieres más o menos.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿Con qué frecuencia conviene venir?</summary>
+            <p>
+              Depende de cada persona y de lo que busques. Tras la primera
+              sesión te cuento qué ritmo encaja mejor contigo. El bono de
+              4 sesiones es una buena opción para trabajar con continuidad.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿Debo avisar de alguna lesión o condición médica?</summary>
+            <p>
+              Sí, siempre. Si tienes una lesión reciente, estás embarazada
+              o sigues un tratamiento médico, cuéntamelo antes de la sesión.
+              El quiromasaje no sustituye la atención médica ni el
+              diagnóstico de un profesional sanitario.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿Cómo reservo o cambio mi cita?</summary>
+            <p>
+              Por WhatsApp, Instagram o llamada. Si necesitas cambiar la
+              cita, avísame con la mayor antelación posible para poder
+              ofrecer ese hueco a otra persona.
+            </p>
+          </details>
 
         </div>
 
@@ -979,14 +1691,56 @@
 
           <div class="gold-line"></div>
 
-          <a
-            href="https://wa.me/34624974669"
-            class="btn"
-          >
-            Reservar por WhatsApp
-          </a>
+          <div class="booking-actions">
+
+            <a
+              href="https://wa.me/34624974669?text=Hola%20Alba%2C%20me%20gustar%C3%ADa%20reservar%20una%20sesi%C3%B3n%20de%20quiromasaje."
+              class="btn btn-light"
+              target="_blank"
+              rel="noopener"
+            >
+              Reservar por WhatsApp
+            </a>
+
+            <a
+              href="https://instagram.com/quirosana_"
+              class="btn btn-outline"
+              target="_blank"
+              rel="noopener"
+            >
+              Escribir por Instagram
+            </a>
+
+          </div>
 
         </div>
+
+
+        <dl class="contact-list">
+
+          <div>
+            <dt>Teléfono</dt>
+            <dd><a href="tel:+34624974669">624 97 46 69</a></dd>
+          </div>
+
+          <div>
+            <dt>Correo</dt>
+            <dd><a href="mailto:albaquirosana@gmail.com">albaquirosana@gmail.com</a></dd>
+          </div>
+
+          <div>
+            <dt>Instagram</dt>
+            <dd><a href="https://instagram.com/quirosana_" target="_blank" rel="noopener">@quirosana_</a></dd>
+          </div>
+
+          <!-- COMPLETAR: cuando tengas dirección y horario, añade aquí otro bloque
+          <div>
+            <dt>Dirección</dt>
+            <dd>Calle, número, ciudad</dd>
+          </div>
+          -->
+
+        </dl>
 
       </div>
 
@@ -1001,41 +1755,72 @@
 
   <footer>
 
-    <div class="container footer-inner">
+    <div class="container">
 
-      <div>
+      <div class="footer-inner">
 
-        <div class="logo">
-          Quiro<span>S</span>ana
+        <div>
+
+          <div class="logo">
+            Quiro<span>S</span>ana
+          </div>
+
+          <div class="logo-subtitle">
+            Alba · Quiromasajista
+          </div>
+
         </div>
 
-        <div class="logo-subtitle">
-          Alba · Quiromasajista
+
+        <div class="footer-contact">
+
+          <div>
+            <a href="tel:+34624974669">624 97 46 69</a>
+          </div>
+
+          <div>
+            <a href="mailto:albaquirosana@gmail.com">albaquirosana@gmail.com</a>
+          </div>
+
+          <div>
+            <a href="https://instagram.com/quirosana_" target="_blank" rel="noopener">@quirosana_</a>
+          </div>
+
         </div>
 
       </div>
 
-
-      <div class="footer-contact">
-
-        <div>
-          624 97 46 69
-        </div>
-
-        <div>
-          albaquirosana@gmail.com
-        </div>
-
-        <div>
-          @quirosana_
-        </div>
-
+      <div class="footer-bottom">
+        © <span id="year">2026</span> QuiroSana · Todos los derechos reservados
       </div>
 
     </div>
 
   </footer>
 
+
+  <script>
+    // Menú móvil
+    const toggle = document.getElementById("menuToggle");
+    const nav = document.getElementById("mainNav");
+
+    function setMenu(open) {
+      nav.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", open);
+      toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+    }
+
+    toggle.addEventListener("click", () => {
+      setMenu(toggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    nav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => setMenu(false));
+    });
+
+    // Año automático en el pie
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
