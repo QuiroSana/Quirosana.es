@@ -529,7 +529,7 @@
 
     .intro {
       padding: 150px 0;
-      background: var(--white);
+      background: var(--background);
     }
 
     .intro-grid {
@@ -558,7 +558,6 @@
       position: relative;
       display: inline-block;
       color: var(--burgundy);
-      padding-bottom: 4px;
     }
 
     .measure::after {
@@ -566,7 +565,7 @@
       position: absolute;
       left: 0;
       right: 0;
-      bottom: -14px;
+      bottom: -7px;
       height: 11px;
 
       background:
@@ -1528,7 +1527,7 @@
         </div>
 
         <h2>
-          Así es tu primera visita.
+          Así es tu primera visita
         </h2>
 
 
@@ -1587,7 +1586,7 @@
           </div>
 
           <h2>
-            Una sesión pensada para ti.
+            Una sesión pensada para ti
           </h2>
 
 
@@ -1660,7 +1659,7 @@
           </div>
 
           <h2>
-            Preguntas frecuentes.
+            Preguntas frecuentes
           </h2>
 
         </div>
@@ -1875,6 +1874,22 @@
     nav.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", () => setMenu(false));
     });
+
+    // Empezar siempre arriba: evita que el móvil "recuerde" la posición
+    // de una visita anterior y abra la web a mitad de página.
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+
+    function startAtTop() {
+      if (!location.hash || location.hash === "#inicio") {
+        window.scrollTo(0, 0);
+      }
+    }
+
+    startAtTop();
+    window.addEventListener("load", startAtTop);
+    window.addEventListener("pageshow", startAtTop);
 
     // Año automático en el pie
     document.getElementById("year").textContent = new Date().getFullYear();
