@@ -53,6 +53,10 @@
       --text-soft: #5C5C5C;
       --cream: #F2EBDD;
       --cream-dark: #E9DFCB;
+      --rose-gold: #E3B7A3;
+      --wine-light: #A8384F;
+      --wine-button: #A8384F;
+      --header-bg: #E3B7A3;
       --header-h: 84px;
     }
 
@@ -116,10 +120,10 @@
       position: relative;
       z-index: 50;
 
-      background: var(--cream-dark);
+      background: var(--header-bg);
 
       padding: 14px 0;
-      border-bottom: 1px solid rgba(181, 154, 106, 0.45);
+      border-bottom: 1px solid rgba(100, 31, 43, 0.25);
     }
 
     .header-inner {
@@ -300,6 +304,48 @@
     /* =========================
        HERO / PORTADA
     ========================= */
+
+    .hero-wrap {
+      background: var(--anthracite);
+    }
+
+    .hero-wrap .eyebrow {
+      color: var(--wine-light);
+      font-weight: 700;
+    }
+
+    .hero-wrap .hero h1 {
+      color: var(--rose-gold);
+    }
+
+    .hero-wrap .hero h1 span.accent {
+      color: var(--wine-light);
+    }
+
+    .hero-wrap .hero-subtitle {
+      color: var(--rose-gold);
+      opacity: 0.75;
+    }
+
+    .hero-wrap .hero-description {
+      color: rgba(227, 183, 163, 0.82);
+    }
+
+    .hero-wrap .btn {
+      background: var(--wine-button);
+      border-color: var(--wine-button);
+      color: var(--white);
+    }
+
+    .hero-wrap .btn:hover {
+      background: #BF4560;
+      border-color: #BF4560;
+    }
+
+    .hero-wrap .hero-side-detail {
+      color: var(--rose-gold);
+      opacity: 0.6;
+    }
 
     .hero {
       min-height: 720px;
@@ -1087,8 +1133,8 @@
 
         padding: 8px 5% 24px;
 
-        background: var(--cream-dark);
-        border-bottom: 1px solid rgba(181, 154, 106, 0.45);
+        background: var(--header-bg);
+        border-bottom: 1px solid rgba(100, 31, 43, 0.25);
 
         display: none;
       }
@@ -1267,7 +1313,9 @@
          PORTADA
     ========================= -->
 
-    <section class="container hero" id="inicio">
+    <section class="hero-wrap" id="inicio">
+
+    <div class="container hero">
 
       <div class="hero-content">
 
@@ -1322,6 +1370,8 @@
         </div>
 
       </div>
+
+    </div>
 
     </section>
 
