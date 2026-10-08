@@ -447,14 +447,31 @@
       content: "";
       position: absolute;
       inset: 18px;
-      border: 1px solid rgba(181, 154, 106, 0.55);
+      border: 1px solid rgba(227, 183, 163, 0.65);
       pointer-events: none;
+      z-index: 2;
     }
 
     .hero-image img {
-      width: 82%;
-      height: auto;
-      mix-blend-mode: multiply;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 40%;
+    }
+
+    /* Degradado suave abajo para que se lean los textos sobre la foto */
+    .hero-image::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 38%;
+
+      background: linear-gradient(to top, rgba(37, 37, 37, 0.62), rgba(37, 37, 37, 0));
+      pointer-events: none;
     }
 
     .hero-image-text {
@@ -468,8 +485,9 @@
       font-size: 9px;
       letter-spacing: 4px;
 
-      color: var(--burgundy);
+      color: var(--rose-gold);
       text-transform: uppercase;
+      z-index: 2;
     }
 
     .hero-image-detail {
@@ -481,8 +499,9 @@
       font-size: 9px;
       letter-spacing: 2px;
 
-      color: var(--anthracite);
+      color: var(--rose-gold);
       text-transform: uppercase;
+      z-index: 2;
     }
 
     .hero-side-detail {
@@ -1073,8 +1092,13 @@
     .hero-content > :nth-child(4) { animation-delay: 0.36s; }
     .hero-content > :nth-child(5) { animation-delay: 0.48s; }
 
+    @keyframes fade {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
     .hero-image img {
-      animation: rise 1.3s cubic-bezier(.2,.7,.2,1) 0.2s both;
+      animation: fade 1.4s ease 0.2s both;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1349,10 +1373,10 @@
         <div class="hero-image">
 
           <img
-            src="logo.png"
-            alt="Logotipo de QuiroSana: las letras Q y S entrelazadas en burdeos y azul marino"
-            width="440"
-            height="365"
+            src="hero.jpg"
+            alt="Masajista realizando un masaje cervical a un hombre tumbado en una camilla, con una toalla oscura sobre los ojos, en una sala cálida y luminosa"
+            width="1024"
+            height="1536"
           >
 
           <div class="hero-image-text">
@@ -1363,10 +1387,6 @@
             Alba · Quiromasajista
           </div>
 
-        </div>
-
-        <div class="hero-side-detail">
-          QuiroSana · Alba · Quiromasajista
         </div>
 
       </div>
