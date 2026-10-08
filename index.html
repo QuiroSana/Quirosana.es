@@ -32,6 +32,10 @@
   }
   </script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+
   <style>
 
     /* =========================
@@ -465,21 +469,63 @@
 
     .intro-grid {
       display: grid;
-      grid-template-columns: 0.8fr 1fr;
-      gap: 120px;
-      align-items: start;
+      grid-template-columns: 1fr 1fr;
+      gap: 110px;
+      align-items: center;
     }
 
     .intro h2 {
-      margin-top: 22px;
-
       font-family: Georgia, "Times New Roman", serif;
       font-weight: 400;
 
-      font-size: clamp(32px, 3.8vw, 52px);
-      line-height: 1.15;
+      font-size: clamp(30px, 3.4vw, 46px);
+      line-height: 1.2;
 
       color: var(--anthracite);
+    }
+
+    .intro .section-label {
+      margin-bottom: 26px;
+    }
+
+    /* "medida" con una regla / cinta métrica debajo */
+    .measure {
+      position: relative;
+      display: inline-block;
+      color: var(--burgundy);
+      padding-bottom: 4px;
+    }
+
+    .measure::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -14px;
+      height: 11px;
+
+      background:
+        /* marcas largas (cada 5) */
+        repeating-linear-gradient(90deg, var(--gold) 0 1px, transparent 1px 25px) 0 0 / 100% 11px no-repeat,
+        /* marcas cortas */
+        repeating-linear-gradient(90deg, var(--gold) 0 1px, transparent 1px 5px) 0 100% / 100% 5px no-repeat,
+        /* línea base */
+        linear-gradient(var(--gold), var(--gold)) 0 100% / 100% 1px no-repeat;
+
+      opacity: 0.9;
+    }
+
+    .title-accent {
+      display: block;
+      margin-top: 40px;
+
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(34px, 3.8vw, 54px);
+      line-height: 1.1;
+
+      color: var(--burgundy);
     }
 
     .intro p {
@@ -536,7 +582,11 @@
 
     .services {
       padding: 140px 0;
-      background: var(--background);
+      background: var(--navy);
+    }
+
+    .services .section-label {
+      color: var(--gold);
     }
 
     .services h2,
@@ -552,6 +602,10 @@
       font-size: clamp(44px, 5vw, 70px);
 
       color: var(--anthracite);
+    }
+
+    .services h2 {
+      color: var(--white);
     }
 
     .service-grid {
@@ -668,6 +722,8 @@
 
     .step p {
       margin-top: 14px;
+      max-width: 240px;
+      text-wrap: balance;
 
       font-size: 14px;
       line-height: 1.8;
@@ -1081,7 +1137,11 @@
 
       .intro-grid {
         grid-template-columns: 1fr;
-        gap: 45px;
+        gap: 55px;
+      }
+
+      .intro-title {
+        order: -1;
       }
 
       .service-grid {
@@ -1217,7 +1277,7 @@
 
         <h1>
           <span class="line">El cuerpo</span>
-          <span class="line">también <span class="accent">habla.</span></span>
+          <span class="line">también <span class="accent">habla</span></span>
         </h1>
 
         <p class="hero-subtitle">
@@ -1274,21 +1334,11 @@
 
       <div class="container intro-grid">
 
-        <div>
+        <div class="intro-text">
 
           <div class="section-label">
             QuiroSana
           </div>
-
-          <h2>
-            Cuando lo genérico no funciona, necesitas un tratamiento
-            hecho a medida: prueba el quiromasaje personalizado.
-          </h2>
-
-        </div>
-
-
-        <div>
 
           <p>
             Cada cuerpo tiene unas necesidades diferentes.
@@ -1308,6 +1358,17 @@
             <strong>Alba</strong>
             <span>Quiromasajista · Fundadora de QuiroSana</span>
           </div>
+
+        </div>
+
+
+        <div class="intro-title">
+
+          <h2>
+            Cuando lo genérico no funciona, necesitas un tratamiento
+            hecho a <span class="measure">medida</span>
+            <span class="title-accent">prueba el quiromasaje personalizado</span>
+          </h2>
 
         </div>
 
@@ -1404,10 +1465,9 @@
         <ol class="steps">
 
           <li class="step">
-            <h3>Hablamos</h3>
+            <h3>Te escucho</h3>
             <p>
-              Me cuentas cómo estás, qué molestias tienes y qué
-              buscas. Sin prisas y con total confianza.
+              Me cuentas cómo estás y qué molestias tienes.
             </p>
           </li>
 
@@ -1420,10 +1480,10 @@
           </li>
 
           <li class="step">
-            <h3>Trabajo</h3>
+            <h3>Tratamiento</h3>
             <p>
-              Realizo el quiromasaje con técnica manual, ajustando
-              la presión durante toda la sesión.
+              Realizo el quiromasaje ajustando la presión durante
+              toda la sesión.
             </p>
           </li>
 
@@ -1467,11 +1527,11 @@
 
               <div class="price-name">
                 Sesión de quiromasaje
-                <span class="price-note">45 minutos</span>
+                <span class="price-note">60 minutos</span>
               </div>
 
               <div class="price">
-                45 €
+                50 €
               </div>
 
             </div>
@@ -1481,11 +1541,11 @@
 
               <div class="price-name">
                 Bono 4 sesiones
-                <span class="price-note">Equivale a 40 € por sesión</span>
+                <span class="price-note">Equivale a 45 € por sesión</span>
               </div>
 
               <div class="price">
-                160 €
+                180 €
               </div>
 
             </div>
@@ -1500,8 +1560,8 @@
           <h3>¿No sabes qué sesión elegir?</h3>
 
           <p>
-            Escríbeme y te oriento según lo que sientas en tu cuerpo.
-            Elegimos el tratamiento antes de empezar.
+            Escríbeme y te oriento según la valoración.
+            Elegimos el tratamiento antes de empezar y siempre se podrá redirigir.
           </p>
 
           <a href="https://wa.me/34624974669" class="btn" target="_blank" rel="noopener">
@@ -1562,7 +1622,8 @@
             <p>
               Depende de cada persona y de lo que busques. Tras la primera
               sesión te cuento qué ritmo encaja mejor contigo. El bono de
-              4 sesiones es una buena opción para trabajar con continuidad.
+              4 sesiones es una buena opción para trabajar una sesión a la
+              semana.
             </p>
           </details>
 
@@ -1579,7 +1640,8 @@
           <details>
             <summary>¿Cómo reservo o cambio mi cita?</summary>
             <p>
-              Por WhatsApp, Instagram o llamada. Si necesitas cambiar la
+              Se reserva mínimo con 1 día de antelación, por WhatsApp o
+              llamada telefónica al mismo número. Si necesitas cambiar la
               cita, avísame con la mayor antelación posible para poder
               ofrecer ese hueco a otra persona.
             </p>
@@ -1607,8 +1669,7 @@
           </div>
 
           <h2>
-            Hablemos de<br>
-            tu cuerpo.
+            ¿Qué necesitas hoy?
           </h2>
 
           <p>
