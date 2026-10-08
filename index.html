@@ -16,7 +16,8 @@
   <meta property="og:image" content="logo.png">
 
   <!-- Icono de la pestaña -->
-  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="icon" type="image/png" href="logo-icon.png">
+  <link rel="apple-touch-icon" href="logo-icon.png">
 
   <!-- Datos para buscadores (Google) -->
   <script type="application/ld+json">
@@ -1096,13 +1097,205 @@
       to   { opacity: 1; }
     }
 
+    @keyframes settle {
+      from { transform: scale(1.07); }
+      to   { transform: scale(1); }
+    }
+
     .hero-image img {
-      animation: fade 1.4s ease 0.2s both;
+      animation:
+        fade 1.4s ease 0.2s both,
+        settle 3s cubic-bezier(.2,.7,.2,1) 0.2s both;
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+
+
+
+    /* =========================================================
+       MEJORAS: interacción y movimiento
+    ========================================================= */
+
+    /* Barra fina de progreso de lectura */
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      z-index: 100;
+
+      background: linear-gradient(90deg, var(--gold), var(--rose-gold), var(--wine-light));
+      transform: scaleX(0);
+      transform-origin: 0 50%;
+      pointer-events: none;
+    }
+
+    /* Subrayado elegante en el menú */
+    nav a:not(.nav-cta) {
+      position: relative;
+    }
+
+    nav a:not(.nav-cta)::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;
+      height: 1px;
+
+      background: var(--burgundy);
+      transform: scaleX(0);
+      transform-origin: 0 50%;
+      transition: transform 0.35s ease;
+    }
+
+    nav a:not(.nav-cta):hover::after {
+      transform: scaleX(1);
+    }
+
+    /* Aparición suave al hacer scroll */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .js .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Enlace de reserva dentro de cada tratamiento */
+    .service-link {
+      display: inline-block;
+      margin-top: 22px;
+
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--burgundy);
+
+      border-bottom: 1px solid rgba(181, 154, 106, 0.8);
+      padding-bottom: 4px;
+
+      transition: color 0.3s ease, letter-spacing 0.3s ease;
+    }
+
+    .service-link:hover {
+      color: var(--burgundy-dark);
+      letter-spacing: 2.6px;
+    }
+
+    /* Selector "¿Qué necesitas hoy?" */
+    .need-label {
+      margin-top: 38px;
+
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .need-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+
+      margin-top: 18px;
+    }
+
+    .need-chip {
+      padding: 14px 22px;
+
+      background: transparent;
+      color: var(--white);
+
+      font-family: inherit;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      cursor: pointer;
+
+      transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .need-chip:hover {
+      border-color: var(--rose-gold);
+    }
+
+    .need-chip[aria-pressed="true"] {
+      background: var(--rose-gold);
+      border-color: var(--rose-gold);
+      color: var(--burgundy-dark);
+    }
+
+    .need-preview {
+      min-height: 3.4em;
+      max-width: 600px;
+      margin-top: 22px !important;
+
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-size: 16px !important;
+      line-height: 1.6 !important;
+
+      color: var(--rose-gold) !important;
+    }
+
+    /* Botón flotante de reserva */
+    .float-cta {
+      position: fixed;
+      right: 20px;
+      bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+      z-index: 60;
+
+      padding: 15px 24px;
+
+      background: var(--burgundy);
+      color: var(--white);
+
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      border: 1px solid var(--rose-gold);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+
+      opacity: 0;
+      transform: translateY(14px);
+      pointer-events: none;
+
+      transition:
+        opacity 0.4s ease,
+        transform 0.4s ease,
+        background 0.3s ease;
+    }
+
+    .float-cta.show {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+
+    .float-cta:hover {
+      background: var(--burgundy-dark);
+    }
+
+    /* Respeta a quien prefiere menos movimiento */
+    @media (prefers-reduced-motion: reduce) {
+      .js .reveal { opacity: 1; transform: none; }
+      .progress { display: none; }
     }
 
 
@@ -1283,6 +1476,8 @@
 
 
 <body>
+
+  <div class="progress" id="progress" aria-hidden="true"></div>
 
 
   <!-- =========================
@@ -1477,6 +1672,15 @@
 
             <div class="service-meta">Presión media-firme</div>
 
+            <a
+              class="service-link"
+              href="https://wa.me/34624974669?text=Hola%20Alba%2C%20me%20gustar%C3%ADa%20reservar%20una%20sesi%C3%B3n%20de%20quiromasaje%20descontracturante."
+              target="_blank"
+              rel="noopener"
+            >
+              Reservar este tratamiento →
+            </a>
+
           </article>
 
 
@@ -1491,6 +1695,15 @@
 
             <div class="service-meta">Antes o después del esfuerzo</div>
 
+            <a
+              class="service-link"
+              href="https://wa.me/34624974669?text=Hola%20Alba%2C%20me%20gustar%C3%ADa%20reservar%20una%20sesi%C3%B3n%20de%20quiromasaje%20deportivo."
+              target="_blank"
+              rel="noopener"
+            >
+              Reservar este tratamiento →
+            </a>
+
           </article>
 
 
@@ -1504,6 +1717,15 @@
             </p>
 
             <div class="service-meta">Presión suave</div>
+
+            <a
+              class="service-link"
+              href="https://wa.me/34624974669?text=Hola%20Alba%2C%20me%20gustar%C3%ADa%20reservar%20una%20sesi%C3%B3n%20de%20quiromasaje%20relajante."
+              target="_blank"
+              rel="noopener"
+            >
+              Reservar este tratamiento →
+            </a>
 
           </article>
 
@@ -1748,9 +1970,21 @@
 
           <div class="gold-line"></div>
 
+          <div class="need-label" id="needLabel">Elige lo que necesitas y preparo el mensaje</div>
+
+          <div class="need-options" role="group" aria-labelledby="needLabel">
+            <button type="button" class="need-chip" aria-pressed="false" data-msg="Hola Alba, tengo una zona de tensión y me gustaría reservar una sesión de quiromasaje descontracturante.">Aliviar tensión</button>
+            <button type="button" class="need-chip" aria-pressed="false" data-msg="Hola Alba, hago deporte y me gustaría reservar una sesión de quiromasaje deportivo.">Recuperarme del deporte</button>
+            <button type="button" class="need-chip" aria-pressed="false" data-msg="Hola Alba, necesito desconectar y me gustaría reservar una sesión de quiromasaje relajante.">Desconectar</button>
+            <button type="button" class="need-chip" aria-pressed="false" data-msg="Hola Alba, no sé qué tratamiento me conviene. ¿Me puedes orientar para reservar una sesión?">No lo sé, oriéntame</button>
+          </div>
+
+          <p class="need-preview" id="needPreview" aria-live="polite"></p>
+
           <div class="booking-actions">
 
             <a
+              id="waMain"
               href="https://wa.me/34624974669?text=Hola%20Alba%2C%20me%20gustar%C3%ADa%20reservar%20una%20sesi%C3%B3n%20de%20quiromasaje."
               class="btn btn-light"
               target="_blank"
@@ -1856,6 +2090,18 @@
   </footer>
 
 
+  <a
+    class="float-cta"
+    id="floatCta"
+    href="https://wa.me/34624974669?text=Hola%20Alba%2C%20me%20gustar%C3%ADa%20reservar%20una%20sesi%C3%B3n%20de%20quiromasaje."
+    target="_blank"
+    rel="noopener"
+    aria-label="Reservar por WhatsApp"
+  >
+    Reservar
+  </a>
+
+
   <script>
     // Menú móvil
     const toggle = document.getElementById("menuToggle");
@@ -1890,6 +2136,118 @@
     startAtTop();
     window.addEventListener("load", startAtTop);
     window.addEventListener("pageshow", startAtTop);
+
+
+    // ===== Mejoras de interacción =====
+    document.documentElement.classList.add("js");
+
+    // 1) Aparición suave al hacer scroll
+    (function () {
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const groups = [
+        ".intro-text", ".intro-title",
+        ".services .section-label", ".services h2", ".service-card",
+        ".process .section-label", ".process h2", ".step",
+        ".prices-grid > div > *", ".prices-aside",
+        ".faq-grid > div:first-child", ".faq-list details",
+        ".booking-inner > *", ".contact-list"
+      ];
+
+      const items = [];
+      groups.forEach(sel => {
+        document.querySelectorAll(sel).forEach((el, i) => {
+          if (el.classList.contains("reveal")) return;
+          el.classList.add("reveal");
+          el.style.transitionDelay = (Math.min(i, 4) * 110) + "ms";
+          items.push(el);
+        });
+      });
+
+      if (reduce || !("IntersectionObserver" in window)) {
+        items.forEach(el => el.classList.add("in"));
+        return;
+      }
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          el.classList.add("in");
+          io.unobserve(el);
+
+          // Al terminar, se devuelven las transiciones originales (hover, etc.)
+          setTimeout(() => {
+            el.classList.remove("reveal", "in");
+            el.style.transitionDelay = "";
+          }, 1600);
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+
+      items.forEach(el => io.observe(el));
+    })();
+
+    // 2) Barra de progreso de lectura
+    (function () {
+      const bar = document.getElementById("progress");
+      let ticking = false;
+
+      function update() {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+        bar.style.transform = "scaleX(" + ratio + ")";
+        ticking = false;
+      }
+
+      window.addEventListener("scroll", () => {
+        if (!ticking) {
+          requestAnimationFrame(update);
+          ticking = true;
+        }
+      }, { passive: true });
+
+      update();
+    })();
+
+    // 3) Botón flotante: aparece al salir de la portada y se oculta en Reservas
+    (function () {
+      const cta = document.getElementById("floatCta");
+      const hero = document.getElementById("inicio");
+      const booking = document.getElementById("reservar");
+      if (!cta || !hero || !booking || !("IntersectionObserver" in window)) return;
+
+      let heroVisible = true;
+      let bookingVisible = false;
+
+      function refresh() {
+        cta.classList.toggle("show", !heroVisible && !bookingVisible);
+      }
+
+      new IntersectionObserver(([e]) => { heroVisible = e.isIntersecting; refresh(); },
+        { threshold: 0.15 }).observe(hero);
+
+      new IntersectionObserver(([e]) => { bookingVisible = e.isIntersecting; refresh(); },
+        { threshold: 0.25 }).observe(booking);
+    })();
+
+    // 4) Selector "¿Qué necesitas hoy?" -> mensaje de WhatsApp personalizado
+    (function () {
+      const chips = document.querySelectorAll(".need-chip");
+      const preview = document.getElementById("needPreview");
+      const main = document.getElementById("waMain");
+      const float = document.getElementById("floatCta");
+      const base = "https://wa.me/34624974669?text=";
+
+      chips.forEach(chip => {
+        chip.addEventListener("click", () => {
+          const msg = chip.dataset.msg;
+          chips.forEach(c => c.setAttribute("aria-pressed", c === chip ? "true" : "false"));
+          preview.textContent = "“" + msg + "”";
+          const url = base + encodeURIComponent(msg);
+          main.href = url;
+          if (float) float.href = url;
+        });
+      });
+    })();
 
     // Año automático en el pie
     document.getElementById("year").textContent = new Date().getFullYear();
